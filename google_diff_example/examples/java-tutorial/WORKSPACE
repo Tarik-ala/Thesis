@@ -1,0 +1,23 @@
+local_repository(
+    name = "com_google_differential_privacy",
+    path = "../../../differential-privacy",
+)
+
+local_repository(
+    name = "com_google_java_differential_privacy",
+    path = "../../../differential-privacy/java",
+)
+
+load("@com_google_differential_privacy//:differential_privacy_deps.bzl", "differential_privacy_deps")
+differential_privacy_deps()
+
+# Protobuf transitive dependencies. /home/tarik/Desktop/differential-privacy
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+protobuf_deps()
+
+# Load maven rules.
+load("@com_google_java_differential_privacy//:dp_java_deps_preload.bzl", "dp_java_deps_prework")
+dp_java_deps_prework()
+
+load("@com_google_java_differential_privacy//:dp_java_deps.bzl", "dp_java_deps")
+dp_java_deps()
