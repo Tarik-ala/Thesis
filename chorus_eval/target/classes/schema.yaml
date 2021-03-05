@@ -1,0 +1,43 @@
+---
+databases:
+- database: "test"
+  dialect: "MYSQL"
+  namespace: "public"
+  tables:
+  - table: "orders"
+    approxRowCount: 148455
+    columns:
+    - name: "order_id"
+      maxFreq: 1
+    - name: "order_date"
+      canRelease: true
+    - name: "customer_id"
+      maxFreq: 100
+    - name: "product_id"
+      maxFreq: 500
+      canRelease: true
+      domainSet: "products.product_id"
+    - name: "quantity"
+    - name: "order_cost"
+  - table: "products"
+    isPublic: true
+    columns:
+    - name: "product_id"
+      maxFreq: 300
+    - name: "name"
+    - name: "price"
+  - table: "customers"
+    columns:
+    - name: "customer_id"
+      maxFreq: 1
+    - name: "name"
+      isTainted: true
+    - name: "address"
+      isTainted: true
+      maxFreq: 5
+  - table: "recommendations"
+    columns:
+    - name: "customer_id"
+      maxFreq: 250
+    - name: "product_id"
+      maxFreq: 2000

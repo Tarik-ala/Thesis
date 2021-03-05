@@ -1,0 +1,143 @@
+---
+databases:
+- database: "test"
+  dialect: "MYSQL"
+  namespace: "public"
+  tables:
+  - table: "orders"
+    approxRowCount: 148455
+    columns:
+    - name: "order_id"
+      maxFreq: 1
+    - name: "order_date"
+      canRelease: true
+    - name: "customer_id"
+      maxFreq: 10
+    - name: "product_id"
+      maxFreq: 10
+      canRelease: true
+      domainSet: "products.product_id"
+    - name: "quantity"
+    - name: "order_cost"
+  - table: "products"
+    isPublic: true
+    columns:
+    - name: "product_id"
+      maxFreq: 10
+    - name: "name"
+    - name: "price"
+  - table: "customers"
+    columns:
+    - name: "customer_id"
+      maxFreq: 1
+    - name: "name"
+      isTainted: true
+    - name: "address"
+      isTainted: true
+      maxFreq: 5
+  - table: "recommendations"
+    columns:
+    - name: "customer_id"
+      maxFreq: 10
+    - name: "product_id"
+      maxFreq: 10
+
+
+- database: "tpch"
+  dialect: "MYSQL"
+  namespace: ""
+  tables:
+  - table: "nation"
+    approxRowCount: 25
+    columns:
+    - name: "n_nationkey"
+    - name: "n_name"
+    - name: "n_regionkey"
+    - name: "n_comment"
+  - table: "region"
+    approxRowCount: 5
+    columns:
+    - name: "r_regionkey"
+    - name: "r_name"
+    - name: "r_comment"
+    - name: "n_comment"
+  - table: "part"
+    approxRowCount: 2040
+    columns:
+    - name: "p_partkey"
+    - name: "p_name"
+    - name: "p_mfgr"
+    - name: "p_brand"
+    - name: "p_type"
+    - name: "p_size"
+    - name: "p_container"
+    - name: "p_retailprice"
+    - name: "p_comment"
+    - name: "CD"
+  - table: "supplier"
+    approxRowCount: 100
+    columns:
+    - name: "s_suppkey"
+    - name: "s_name"
+    - name: "s_address"
+    - name: "s_nationkey"
+    - name: "s_phone"
+    - name: "s_acctbal"
+    - name: "s_comment"
+  - table: "partsupp"
+    approxRowCount: 7992
+    columns:
+    - name: "ps_partkey"
+    - name: "ps_suppkey"
+    - name: "ps_availqty"
+    - name: "ps_supplycost"
+    - name: "ps_comment"
+  - table: "customer"
+    approxRowCount: 1500
+    columns:
+    - name: "c_custkey"
+      maxFreq: 10
+    - name: "c_name"
+    - name: "c_address"
+    - name: "c_nationkey"
+    - name: "c_phone"
+    - name: "c_acctbal"
+    - name: "c_mktsegment"
+    - name: "c_comment"
+  - table: "orders"
+    approxRowCount: 15125
+    columns:
+    - name: "o_orderkey"
+      maxFreq: 10
+    - name: "o_custkey"
+      maxFreq: 10
+    - name: "o_orderstatus"
+    - name: "o_totalprice"
+    - name: "o_orderdate"
+      maxFreq: 10
+    - name: "o_orderpriority"
+    - name: "o_clerk"
+    - name: "o_shippriority"
+    - name: "o_comment"
+  - table: "lineitem"
+    approxRowCount: 59697
+    columns:
+    - name: "l_orderkey"
+      maxFreq: 10
+    - name: "l_partkey"
+    - name: "l_suppkey"
+    - name: "l_linenumber"
+    - name: "l_quantity"
+    - name: "l_extendedprice"
+    - name: "l_discount"
+    - name: "l_tax"
+    - name: "l_returnflag"
+    - name: "l_linestatus"
+    - name: "l_shipdate"
+    - name: "l_commitdate"
+      maxFreq: 10
+    - name: "l_receiptdate"
+      maxFreq: 10
+    - name: "l_shipinstruct"
+    - name: "l_shipmode"
+    - name: "l_comment"
